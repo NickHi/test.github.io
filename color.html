@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>生成颜色选择</title>
+<style>
+    body { padding: 50px; }
+    .selectColor { display: block; width: 650px; padding: 0; margin: 0; list-style: none; }
+    .selectColor li { position: relative; display: block; float: left; width: 30px; height: 30px; margin: 1px; border: 1px solid #FFFFFF; border-radius: .3em; transition: all .2s; }
+    .selectColor li:hover { transform: scale(1.5); z-index: 1; }
+</style>
+</head>
+<body>
+    
+<ul class="selectColor" id="selectColor">
+    <li></li>
+</ul>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    /*
+    hsla(hue, saturation, lightness, alpha);
+    hue - 色相	定义色相 (0 到 360) - 0 (或 360) 为红色, 120 为绿色, 240 为蓝色
+    saturation - 饱和度	定义饱和度; 0% 为灰色， 100% 全色        //鲜艳度 越高越鲜艳
+    lightness - 亮度	定义亮度 0% 为暗, 50% 为普通, 100% 为白  //明亮度 越低越黑
+    alpha - 透明度	定义透明度 0（透完全明） ~ 1（完全不透明）
+    */
+    function getColorList(){
+        var html = '';
+        for(var i=0; i<360; i+=2){
+            var color = 'hsla('+ i +','+ 40 +'%,'+ 60 +'%,0.9)';
+            html += '<li data-color="'+color+'" style="background-color:'+color+'"></li>';
+        }
+        $("#selectColor").html(html);
+    }
+    getColorList();
+</script>
+    
+</body>
+</html>
